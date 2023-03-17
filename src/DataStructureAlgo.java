@@ -8,6 +8,7 @@ public class DataStructureAlgo {
 //        object.solve(word.toCharArray(), 0);
 //        object.binarySearch();
         object.insertionSort();
+        object.bubbleSort();
     }
 
     public void permutation(String word) {
@@ -66,11 +67,27 @@ public class DataStructureAlgo {
     }
 
     public void insertionSort() {
-        String[] array = {"shrey", "bhatt", "is", "working", "on", "it"};
-        String max = "null";
+        String[] array = {"shrey", "bhatt", "is", "working", "on", "computer"};
+        for (int i = 0; i < array.length; i++) {
+            String word = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j].compareTo(word) > 0) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = word;
+        }
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+    public void bubbleSort() {
+        int[] array = {1, 31, 33, 2, 65, 3, 9};
+        int max = 0;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
-                if (array[i].compareToIgnoreCase(array[j]) > 0) {
+                if (array[i] > array[j]) {
                     max = array[i];
                     array[i] = array[j];
                     array[j] = max;
@@ -78,7 +95,7 @@ public class DataStructureAlgo {
             }
         }
         for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+            System.out.print(array[i] + " ");
         }
     }
 }
